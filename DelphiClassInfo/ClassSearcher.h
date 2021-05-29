@@ -14,12 +14,12 @@ public:
 		, addrPtrName(AddrPtrName)
 	{}
 
-	const std::string& GetName()			const { return name; }
-	const uint32_t GetClassSize()			const { return size; }
+	const std::string& GetName()		const { return name; }
+	const uint32_t GetClassSize()		const { return size; }
 	const uintptr_t GetAddressPtrVTable()	const { if (addrPtrVTable == 0) return 0; return addrPtrVTable; }
-	const uintptr_t GetVTable()				const { if (addrPtrVTable == 0) return 0; return *(uintptr_t*)addrPtrVTable; }
-	const uintptr_t GetAddressPtrName()		const { if (addrPtrName == 0) return 0; return  addrPtrName + 1; }
-	const uintptr_t GetNameAddress()		const { if (addrPtrName == 0) return 0; return *(uintptr_t*)(addrPtrName + 1); }
+	const uintptr_t GetVTable()		const { if (addrPtrVTable == 0) return 0; return *(uintptr_t*)addrPtrVTable; }
+	const uintptr_t GetAddressPtrName()	const { if (addrPtrName == 0) return 0; return addrPtrName + 1; }
+	const uintptr_t GetNameAddress()	const { if (addrPtrName == 0) return 0; return *(uintptr_t*)(addrPtrName + 1); }
 
 private:
 	std::string name;
