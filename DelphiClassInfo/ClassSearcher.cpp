@@ -22,19 +22,13 @@ bool ClassSearcher::Initialize(const std::vector<std::string>& ClassesName)
 		std::string pattern = getPattern(className);
 		int pos = data.find(pattern);
 		if (pos == std::string::npos)
-		{
-			std::cout << "wtf";
 			return false;
-		}
 		int addr = base + pos;
 
 		for (int32_t i = addr - 4;; i--)
 		{
 			if (i < base)
-			{
-				std::cout << "wtf";
 				return false;
-			}
 			if (*(int32_t*)i == addr)
 			{
 				classesInfo.emplace(className, ClassInfo(className, *(int32_t*)(i + 4), i - 0x20, *(int32_t*)i));
