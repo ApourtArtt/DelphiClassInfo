@@ -17,7 +17,7 @@ bool ClassSearcher::Initialize(const std::vector<std::string>& ClassesName)
 	data.resize(size);
 	memcpy(data.data(), (char*)base, size);
 
-	for (auto className : ClassesName)
+	for (auto& className : ClassesName)
 	{
 		std::string pattern = getPattern(className);
 		int pos = data.find(pattern);
@@ -38,7 +38,7 @@ bool ClassSearcher::Initialize(const std::vector<std::string>& ClassesName)
 	}
 }
 
-const ClassInfo ClassSearcher::GetClassInfoFromName(const std::string& ClassName)
+const ClassInfo& ClassSearcher::GetClassInfoFromName(const std::string& ClassName)
 {
 	return classesInfo[ClassName];
 }

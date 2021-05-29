@@ -7,7 +7,7 @@ class ClassInfo
 {
 public:
 	ClassInfo() : size(0), addrPtrVTable(0), addrPtrName(0) {}
-	ClassInfo(const std::string& Name, uint32_t Size, uint32_t AddrPtrVTable, uint32_t AddrPtrName)
+	ClassInfo(const std::string& Name, uint32_t Size, uintptr_t AddrPtrVTable, uintptr_t AddrPtrName)
 		: name(Name)
 		, size(Size)
 		, addrPtrVTable(AddrPtrVTable)
@@ -32,7 +32,7 @@ class ClassSearcher
 {
 public:
 	static bool Initialize(const std::vector<std::string>& ClassesName);
-	static const ClassInfo GetClassInfoFromName(const std::string& ClassName);
+	static const ClassInfo& GetClassInfoFromName(const std::string& ClassName);
 
 private:
 	static std::string getPattern(const std::string& className);

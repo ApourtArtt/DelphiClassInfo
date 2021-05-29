@@ -14,7 +14,6 @@ DWORD WINAPI MainThread(HMODULE hModule)
 
 	print(ClassSearcher::GetClassInfoFromName("TObject"));
 
-
 	fclose((FILE*)stdout);
 	FreeConsole();
 	FreeLibraryAndExitThread(hModule, 0);
@@ -28,7 +27,6 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReser
 	case DLL_PROCESS_ATTACH:
 		AllocConsole();
 		freopen_s((FILE**)stdout, "CONOUT$", "w", stdout);
-		freopen_s((FILE**)stdin, "CONIN$", "r", stdin);
 		CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)MainThread, hModule, 0, nullptr);
 		break;
 	case DLL_THREAD_ATTACH:
